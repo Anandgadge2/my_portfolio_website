@@ -15,6 +15,7 @@ export default function ThemeToggle() {
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
+          console.log("Theme toggle clicked, current theme:", theme);
           toggleTheme();
         }}
         className="group relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-2xl bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 hover:border-accent hover:scale-110 shadow-2xl transition-all duration-300 active:scale-95 pointer-events-auto"

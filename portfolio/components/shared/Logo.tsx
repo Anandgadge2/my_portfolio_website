@@ -23,15 +23,17 @@ export default function Logo() {
             whileHover={{ rotate: 10, scale: 1.05 }}
             className="relative z-10"
           >
-            <Image
-              src="/images/logo.png"
-              alt="Logo"
-              width={120}
-              height={120}
-              priority
-              style={{ width: 'auto', height: 'auto' }}
-              className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-[0_0_10px_rgba(var(--accent-rgb),0.3)] transition-all"
-            />
+            <div className="relative w-24 h-24 md:w-32 md:h-32">
+              <Image
+                src="/images/logo.png"
+                alt="Logo"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 400px"
+
+                className="object-contain drop-shadow-[0_0_10px_rgba(var(--accent-rgb),0.3)] transition-all"
+              />
+            </div>
           </motion.div>
         </div>
       </Link>

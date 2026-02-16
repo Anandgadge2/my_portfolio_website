@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap");
 
 :root {
   --accent: #22c55e;
@@ -34,16 +34,18 @@
 
 html {
   scroll-behavior: smooth;
+  position: relative;
 }
 
 body {
   @apply bg-surface text-text-primary antialiased;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .font-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
 }
 
 /* Hacker vibe: subtle scanline overlay */
@@ -76,20 +78,40 @@ body::after {
 }
 
 @keyframes noise {
-  0% { transform: translate(0,0); }
-  10% { transform: translate(-5%,-5%); }
-  20% { transform: translate(-10%,5%); }
-  33% { transform: translate(5%,-10%); }
-  45% { transform: translate(-5%,15%); }
-  50% { transform: translate(-10%,5%); }
-  62% { transform: translate(15%,-10%); }
-  75% { transform: translate(0,15%); }
-  85% { transform: translate(5%,5%); }
-  95% { transform: translate(5%,10%); }
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  33% {
+    transform: translate(5%, -10%);
+  }
+  45% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  62% {
+    transform: translate(15%, -10%);
+  }
+  75% {
+    transform: translate(0, 15%);
+  }
+  85% {
+    transform: translate(5%, 5%);
+  }
+  95% {
+    transform: translate(5%, 10%);
+  }
 }
 
 .grid-bg {
-  background-image: 
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;

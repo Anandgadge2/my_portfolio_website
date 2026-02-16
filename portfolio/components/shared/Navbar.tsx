@@ -3,14 +3,22 @@
 import React from "react";
 import {
   Navbar as MTNavbar,
-  Collapse,
-  Typography,
-  Button,
-  IconButton,
+  Collapse as MTCollapse,
+  Typography as MTTypography,
+  Button as MTButton,
+  IconButton as MTIconButton,
 } from "@material-tailwind/react";
+
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "./Logo";
 import ThemeToggle from "@/components/ThemeToggle";
+
+// Fix for Material Tailwind type errors with React 18
+const Typography = MTTypography as any;
+const Button = MTButton as any;
+const IconButton = MTIconButton as any;
+const NavbarMT = MTNavbar as any;
+const Collapse = MTCollapse as any;
 
 export default function Navbar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -41,13 +49,17 @@ export default function Navbar() {
   );
 
   return (
-    <div className="fixed top-0 z-[120] w-full px-4 py-4 md:px-8">
-      <MTNavbar 
-        className="mx-auto max-w-7xl px-4 md:px-6 py-2 glass rounded-3xl border-white/20 dark:border-white/5 shadow-2xl transition-all duration-300"
+    <div className="fixed top-0 left-0 right-0 z-[120] px-4 py-4 md:px-8 pointer-events-none">
+      <NavbarMT 
+        fullWidth
+        blurred={false}
+        shadow={false}
+        color="transparent"
+        className="mx-auto max-w-7xl px-4 md:px-6 py-2 glass rounded-3xl border-white/20 dark:border-white/5 shadow-2xl transition-all duration-300 pointer-events-auto !z-[120]"
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between pointer-events-auto">
           {/* Left: Logo */}
-          <div className="scale-75 md:scale-90 origin-left">
+          <div className="flex items-center pointer-events-auto">
             <Logo />
           </div>
           
@@ -58,7 +70,7 @@ export default function Navbar() {
           
           {/* Right: Actions */}
           <div className="flex items-center gap-2 md:gap-4">
-            <div className="flex items-center scale-90 md:scale-100">
+            <div className="flex items-center">
               <ThemeToggle />
             </div>
             
@@ -72,7 +84,7 @@ export default function Navbar() {
             
             <IconButton
               variant="text"
-              className="lg:hidden h-10 w-10 text-text-primary hover:bg-accent/10 rounded-xl"
+              className="lg:hidden h-10 w-10 text-text-primary hover:bg-accent/10 rounded-xl flex items-center justify-center"
               onClick={() => setOpenNav(!openNav)}
             >
               {openNav ? (
@@ -97,7 +109,7 @@ export default function Navbar() {
             </Button>
           </div>
         </Collapse>
-      </MTNavbar>
+      </NavbarMT>
     </div>
   );
 }
