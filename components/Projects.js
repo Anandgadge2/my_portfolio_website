@@ -7,7 +7,7 @@ import { useEffect, useState, useRef } from "react";
 const GITHUB_API =
   "https://api.github.com/users/Anandgadge2/repos?sort=updated&per_page=30";
 
-export function Projects() {
+export function Projects({ initialData = [] }) {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -15,19 +15,37 @@ export function Projects() {
     layoutEffect: false,
   });
   const headerY = useTransform(scrollYProgress, [0, 1], [-20, 20]);
-  const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(true);
+
+  // Use server data if available, otherwise fetch on client
+  const [repos, setRepos] = useState(initialData);
+  const [loading, setLoading] = useState(initialData.length === 0);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // If we already have data from server, sort it and we're done
+    if (initialData.length > 0) {
+      const sorted = [...initialData].sort((a, b) => {
+        const hasA = a.homepage && String(a.homepage).trim().length > 0;
+        const hasB = b.homepage && String(b.homepage).trim().length > 0;
+        if (hasA && !hasB) return -1;
+        if (!hasA && hasB) return 1;
+        return (
+          b.stargazers_count - a.stargazers_count ||
+          new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+        );
+      });
+      setRepos(sorted);
+      setLoading(false);
+      return;
+    }
+
     fetch(GITHUB_API)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
-          // Sort: Hosted projects first, then by stars, then by date
           const sorted = [...data].sort((a, b) => {
-            const hasA = a.homepage && a.homepage.trim().length > 0;
-            const hasB = b.homepage && b.homepage.trim().length > 0;
+            const hasA = a.homepage && String(a.homepage).trim().length > 0;
+            const hasB = b.homepage && String(b.homepage).trim().length > 0;
             if (hasA && !hasB) return -1;
             if (!hasA && hasB) return 1;
             return (
@@ -43,7 +61,9 @@ export function Projects() {
       })
       .catch(() => setError("Failed to fetch projects"))
       .finally(() => setLoading(false));
-  }, []);
+  }, [initialData]);
+
+  // ... rest of the component remains same ...
 
   if (loading) {
     return (
@@ -117,9 +137,9 @@ export function Projects() {
               const projectLink = hasHomepage ? repo.homepage : repo.html_url;
               const owner = repo.owner?.login || "Anandgadge2";
 
-              // Professional screenshot service for hosted projects
+              // Reliable screenshot service (WordPress Mshots)
               const previewUrl = hasHomepage
-                ? `https://api.microlink.io?url=${encodeURIComponent(repo.homepage)}&screenshot=true&embed=screenshot.url`
+                ? `https://s.wordpress.com/mshots/v1/${encodeURIComponent(repo.homepage)}?w=800`
                 : `https://opengraph.githubassets.com/1/${owner}/${repo.name}`;
 
               return (
