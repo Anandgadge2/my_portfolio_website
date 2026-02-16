@@ -102,8 +102,9 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="text-text-muted mb-10 max-w-xl mx-auto lg:mx-0 font-mono text-sm leading-relaxed"
             >
-              /* Crafting scalable digital experiences with precision and modern
-              engineering principles. Based in Nagpur, India. */
+              {
+                "/* Crafting scalable digital experiences with precision and modern engineering principles. Based in Nagpur, India. */"
+              }
             </motion.p>
 
             <motion.div

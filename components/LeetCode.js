@@ -8,10 +8,31 @@ const LEETCODE_USERNAME = "agadge797";
 const LEETCODE_PROFILE_URL = "https://leetcode.com/u/agadge797/";
 const STATS_API = `https://leetcode-stats-api.herokuapp.com/${LEETCODE_USERNAME}`;
 
+const difficultyConfig = {
+  easy: {
+    label: "Easy",
+    color: "text-green-500 dark:text-green-400",
+    bar: "bg-green-500 dark:bg-green-400",
+    icon: "●",
+  },
+  medium: {
+    label: "Medium",
+    color: "text-amber-500 dark:text-amber-400",
+    bar: "bg-amber-500 dark:bg-amber-400",
+    icon: "◆",
+  },
+  hard: {
+    label: "Hard",
+    color: "text-red-500 dark:text-red-400",
+    bar: "bg-red-500 dark:bg-red-400",
+    icon: "★",
+  },
+};
+
 function ProgressBar({ solved, total, colorClass }) {
   const pct = total > 0 ? Math.min(100, (solved / total) * 100) : 0;
   return (
-    <div className="h-2 rounded-full bg-surface overflow-hidden">
+    <div className="h-2 rounded-full bg-slate-200 dark:bg-white/10 overflow-hidden">
       <motion.div
         initial={{ width: 0 }}
         animate={{ width: `${pct}%` }}
@@ -48,27 +69,6 @@ export function LeetCode() {
       .finally(() => setLoading(false));
   }, []);
 
-  const difficultyConfig = {
-    easy: {
-      label: "Easy",
-      color: "text-emerald-500 dark:text-emerald-400",
-      bar: "bg-emerald-500",
-      icon: "●",
-    },
-    medium: {
-      label: "Medium",
-      color: "text-amber-500 dark:text-amber-400",
-      bar: "bg-amber-500",
-      icon: "◆",
-    },
-    hard: {
-      label: "Hard",
-      color: "text-rose-500 dark:text-rose-400",
-      bar: "bg-rose-500",
-      icon: "★",
-    },
-  };
-
   return (
     <section
       id="leetcode"
@@ -102,7 +102,7 @@ export function LeetCode() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           whileHover={{ y: -6, transition: { duration: 0.2 } }}
-          className="block max-w-5xl mx-auto rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0c]/60 backdrop-blur-xl hover:border-accent/40 hover:shadow-[0_0_50px_rgba(var(--accent-rgb),0.15)] transition-all duration-500 group"
+          className="block max-w-5xl mx-auto rounded-3xl overflow-hidden border border-white/10 bg-white/70 dark:bg-[#0a0a0c]/60 backdrop-blur-xl hover:border-accent/40 hover:shadow-[0_0_50px_rgba(var(--accent-rgb),0.15)] transition-all duration-500 group"
         >
           {/* Card header - terminal style */}
           <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-surface-elevated/80">
@@ -197,7 +197,10 @@ export function LeetCode() {
                         Acceptance Rate
                       </p>
                       <p className="font-mono text-xl font-bold text-cyan-400">
-                        {(stats.acceptanceRate * 100).toFixed(1)}%
+                        {stats.acceptanceRate > 1
+                          ? stats.acceptanceRate.toFixed(1)
+                          : (stats.acceptanceRate * 100).toFixed(1)}
+                        %
                       </p>
                     </div>
                   )}

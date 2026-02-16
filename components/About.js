@@ -121,9 +121,9 @@ export function About() {
             style={{ y: panelY, opacity: panelOpacity }}
             className="flex-1 w-full lg:max-w-md xl:max-w-lg"
           >
-            <div className="bg-[#0a0a0c] rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+            <div className="bg-slate-50 dark:bg-[#0a0a0c] rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
               {/* Terminal Header */}
-              <div className="flex items-center gap-2 px-6 py-4 bg-white/5 border-b border-white/5">
+              <div className="flex items-center gap-2 px-6 py-4 bg-black/5 dark:bg-white/5 border-b border-black/5 dark:border-white/5">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-rose-500/50" />
                   <div className="w-3 h-3 rounded-full bg-amber-500/50" />
@@ -148,7 +148,7 @@ export function About() {
                           scale: 1.05,
                           backgroundColor: "rgba(34, 197, 94, 0.1)",
                         }}
-                        className="px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-xs font-mono text-white/80 transition-all cursor-default"
+                        className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/[0.03] border border-black/10 dark:border-white/10 text-xs font-mono text-text-secondary dark:text-white/80 transition-all cursor-default"
                       >
                         {tech}
                       </motion.div>
@@ -157,23 +157,25 @@ export function About() {
                 </div>
 
                 {/* Status Console */}
-                <div className="pt-6 border-t border-white/5">
+                <div className="pt-6 border-t border-black/5 dark:border-white/5">
                   <div className="text-[10px] font-mono text-text-muted mb-4 tracking-widest uppercase">
                     &gt; CONSOLE_OUTPUT
                   </div>
                   <div className="font-mono text-xs space-y-2 opacity-60">
                     <p className="text-emerald-400">$ system.checkStatus()</p>
-                    <p className="text-white">
+                    <p className="text-text-primary dark:text-white">
                       ... [SUCCESS] Core services optimized
                     </p>
-                    <p className="text-white">
+                    <p className="text-text-primary dark:text-white">
                       ... [SUCCESS] Cloud connectivity verified
                     </p>
-                    <p className="text-white">
+                    <p className="text-text-primary dark:text-white">
                       ... [SUCCESS] Architecture review passed
                     </p>
                     <p className="text-emerald-400">$ uptime --p</p>
-                    <p className="text-white">... 2 years, 4 months, 12 days</p>
+                    <p className="text-text-primary dark:text-white">
+                      ... 2 years, 4 months, 12 days
+                    </p>
                   </div>
                 </div>
               </div>

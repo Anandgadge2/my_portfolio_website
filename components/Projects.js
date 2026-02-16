@@ -106,7 +106,7 @@ export function Projects() {
             viewport={{ once: true }}
             className="text-text-muted text-center mb-10 max-w-2xl mx-auto font-mono text-xs uppercase tracking-[0.2em]"
           >
-            // production_ready_instances
+            {"// production_ready_instances"}
           </motion.p>
         </motion.div>
         <div className="flex gap-8 overflow-x-auto pb-12 no-scrollbar snap-x snap-mandatory px-4 -mx-4">
@@ -140,9 +140,9 @@ export function Projects() {
                   className="group relative flex flex-col h-full min-w-[280px] sm:min-w-[320px] md:min-w-[400px] snap-center first:ml-4 last:mr-4"
                 >
                   {/* Programmer-style Card */}
-                  <div className="flex flex-col h-full bg-surface-elevated/40 backdrop-blur-md rounded-3xl border border-white/10 dark:border-white/5 overflow-hidden transition-all duration-300 group-hover:bg-surface-elevated/60 group-hover:border-accent/30 group-hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)]">
+                  <div className="flex flex-col h-full bg-surface-elevated/40 backdrop-blur-md rounded-3xl border border-slate-200 dark:border-white/5 overflow-hidden transition-all duration-300 group-hover:bg-surface-elevated/60 group-hover:border-accent/30 group-hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)]">
                     {/* Browser Bar Style Header */}
-                    <div className="flex items-center gap-1.5 px-4 py-3 bg-white/5 border-b border-white/5">
+                    <div className="flex items-center gap-1.5 px-4 py-3 bg-black/5 dark:bg-white/5 border-b border-black/5 dark:border-white/5">
                       <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
                       <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                       <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />

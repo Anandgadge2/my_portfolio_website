@@ -49,7 +49,7 @@ export function Experience() {
           viewport={{ once: true }}
           className="text-text-muted text-center mb-10 max-w-2xl mx-auto font-mono text-xs uppercase tracking-[0.2em]"
         >
-          // professional_chronology
+          {"// professional_chronology"}
         </motion.p>
         <div className="relative">
           <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border -translate-x-px md:-translate-x-1/2" />

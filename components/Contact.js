@@ -74,7 +74,7 @@ export function Contact() {
           viewport={{ once: true }}
           className="text-text-muted text-center mb-10 max-w-2xl mx-auto font-mono text-xs uppercase tracking-[0.2em]"
         >
-          // available_for_collaborations
+          {"// available_for_collaborations"}
         </motion.p>
         <div className="grid lg:grid-cols-2 gap-12">
           <motion.div
